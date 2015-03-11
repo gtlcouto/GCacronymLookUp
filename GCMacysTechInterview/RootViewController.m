@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray * lfsArray;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
 @end
 
@@ -25,10 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.BaseURLString = @"http://www.nactem.ac.uk/software/acromine/dictionary.py";
+    self.searchButton.layer.borderColor = self.searchButton.tintColor.CGColor;
+    self.searchButton.layer.borderWidth = 1.0f;
+    self.searchButton.layer.cornerRadius = 4.0f;
 
 }
 
 - (IBAction)onSearchButtonPressed:(id)sender {
+    [self.inputTextField resignFirstResponder];
     //clear up current data
     self.lfsArray = [NSMutableArray new];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
